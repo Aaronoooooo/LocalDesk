@@ -1,0 +1,5 @@
+1,hadoop
+2,cdh
+3,alicloud
+4,tencentcloud
+5,baiducloud

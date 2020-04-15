@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<c3p0-config>
+
+    <!-- 这是默认配置信息 -->
+    <!--<default-config>-->
+        <!--&lt;!&ndash; 连接四大参数配置 &ndash;&gt;-->
+        <!--<property name="jdbcUrl">jdbc:mysql://localhost:3306/jdbctest</property>-->
+        <!--<property name="driverClass">com.mysql.jdbc.Driver</property>-->
+        <!--<property name="user">root</property>-->
+        <!--<property name="password">root</property>-->
+        <!--&lt;!&ndash; 池参数配置 &ndash;&gt;-->
+        <!--<property name="acquireIncrement">3</property>-->
+        <!--<property name="initialPoolSize">10</property>-->
+        <!--<property name="minPoolSize">2</property>-->
+        <!--<property name="maxPoolSize">10</property>-->
+    <!--</default-config>-->
+
+    <!--&lt;!&ndash; 专门为oracle提供的配置信息 &ndash;&gt;-->
+    <!--<named-config name="oracle-config">-->
+        <!--<property name="jdbcUrl">jdbc:mysql://localhost:3306/mydb1</property>-->
+        <!--<property name="driverClass">com.mysql.jdbc.Driver</property>-->
+        <!--<property name="user">root</property>-->
+        <!--<property name="password">123</property>-->
+        <!--<property name="acquireIncrement">3</property>-->
+        <!--<property name="initialPoolSize">10</property>-->
+        <!--<property name="minPoolSize">2</property>-->
+        <!--<property name="maxPoolSize">10</property>-->
+    <!--</named-config>-->
+
+    <named-config name="zt72_test">
+        <property name="jdbcUrl">jdbc:mysql://zongteng72:3306/test?tinyInt1isBit=false</property>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="user">root</property>
+        <property name="password">c4RKchNdOg#</property>
+        <property name="acquireIncrement">3</property>
+        <property name="initialPoolSize">10</property>
+        <property name="minPoolSize">2</property>
+        <property name="maxPoolSize">10</property>
+    </named-config>
+
+    <named-config name="gc_wms">
+        <property name="jdbcUrl">jdbc:mysql://192.168.14.201:53309/wms_goodcang_com?tinyInt1isBit=false</property>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="user">zt103-datateam</property>
+        <property name="password">VUfE8ivE7BJgWNxeL4g</property>
+        <property name="acquireIncrement">3</property>
+        <property name="initialPoolSize">10</property>
+        <property name="minPoolSize">2</property>
+        <property name="maxPoolSize">10</property>
+    </named-config>
+
+    <named-config name="zt75_streaming">
+        <property name="jdbcUrl">jdbc:mysql://zongteng75:3306/zongteng_streaming?tinyInt1isBit=false</property>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="user">root</property>
+        <property name="password">c4RKchNdOg#</property>
+        <property name="acquireIncrement">3</property>
+        <property name="initialPoolSize">10</property>
+        <property name="minPoolSize">2</property>
+        <property name="maxPoolSize">10</property>
+    </named-config>
+
+    <named-config name="gc_tcms">
+        <property name="jdbcUrl">jdbc:mysql://47.88.35.185:63307/goodcang_toms?tinyInt1isBit=false</property>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="user">yc_user</property>
+        <property name="password">aV8OiulWwAmOoBtJ010S</property>
+        <property name="acquireIncrement">3</property>
+        <property name="initialPoolSize">5</property>
+        <property name="minPoolSize">2</property>
+        <property name="maxPoolSize">5</property>
+    </named-config>
+
+    <named-config name="zy_wms">
+        <property name="jdbcUrl">jdbc:mysql://120.78.102.220:3306/wms?tinyInt1isBit=false</property>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="user">zt103_datateam</property>
+        <property name="password">JbGGLcpyx!Njs^AD</property>
+        <property name="acquireIncrement">3</property>
+        <property name="initialPoolSize">5</property>
+        <property name="minPoolSize">2</property>
+        <property name="maxPoolSize">5</property>
+    </named-config>
+
+
+
+
+</c3p0-config>

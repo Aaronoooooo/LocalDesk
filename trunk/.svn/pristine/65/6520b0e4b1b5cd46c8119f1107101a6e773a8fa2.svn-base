@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ztetl:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ztetl_jar</output-path>
+    <root id="archive" name="ztetl.jar">
+      <element id="module-output" name="ztetl" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.0/scala-library-2.11.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

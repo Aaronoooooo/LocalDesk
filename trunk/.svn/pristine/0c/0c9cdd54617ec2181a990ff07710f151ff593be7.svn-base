@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queries>
+    <!--- 记住表的最后不能加分号（;）,否则spark程序会抛出异常 -->
+    <!--- 不用添加DROP TABLE IF EXISTS table，程序代码会自动执行 -->
+
+</queries>
+

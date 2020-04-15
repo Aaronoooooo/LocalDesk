@@ -1,0 +1,53 @@
+package com.zongteng.ztetl.common
+
+import com.zongteng.ztetl.api.SparkConfig
+import com.zongteng.ztetl.util.Log
+import org.apache.spark.sql.SparkSession
+
+object Dw_dim_common {
+
+  /**
+    * 维度表dw全量,不用缓存值列表
+    *
+    * @param task      任务编号
+    * @param sqlArray  要执行的sql语句
+    * @param tableName dw层表名
+    */
+  def getRunCode_full(task: String, tableName: String, sqlArray: Array[String]): Unit = {
+    getRunCode_full(task, tableName, sqlArray, Dw_par_val_list_cache.EMPTY_PAR_VAL_LIST)
+
+  }
+
+  /**
+    * 维度表dw全量
+    *
+    * @param task      任务编号
+    * @param sqlArray  要执行的sql语句
+    * @param tableName dw层表名
+    */
+  def getRunCode_full(task: String, tableName: String, sqlArray: Array[String], datasource_num_id_s: Array[String]): Unit = {
+
+    val logTask: String = Log.start(task)
+
+    try {
+      val spark: SparkSession = SparkConfig.init(task)
+
+      // 先删除表，创建表
+      DwCreateTable.createTable(spark, tableName)
+
+      // 值列表缓存
+      Dw_par_val_list_cache.cacheParValList(spark, datasource_num_id_s)
+
+      //因为维度表没有删除表重建,所以要用overwrite的方式
+      val insertStr = s"insert overwrite table dw.$tableName  " + sqlArray.mkString("\n union all \n ")
+
+      //println(insertStr)
+      spark.sql(insertStr)
+
+      spark.stop()
+      Log.end(logTask)
+    } catch {
+      case ex: Exception => Log.error(logTask, ex)
+    }
+  }
+}

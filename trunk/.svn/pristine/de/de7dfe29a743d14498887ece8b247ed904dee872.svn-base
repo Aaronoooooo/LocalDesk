@@ -1,0 +1,12 @@
+package com.zongteng.ztetl.util.ods.script
+
+class AssistParameterUtilScript {
+
+  def main(args: Array[String]): Unit = {
+
+
+
+
+  }
+
+}

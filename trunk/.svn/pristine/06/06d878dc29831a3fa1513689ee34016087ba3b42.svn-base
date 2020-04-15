@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queries>
+    <!--- 记住表的最后不能加分号（;）,否则spark程序会抛出异常 -->
+    <!--- 不用添加DROP TABLE IF EXISTS table，程序代码会自动执行 -->
+    <hql schema="dw" tableName="fact_inventory_difference" discription="库存差异表">
+        CREATE TABLE IF NOT EXISTS dw.fact_inventory_difference (
+        warehouse_key bigint,
+        wp_key bigint,
+        id_di_id int,
+        id_difference_code string,
+        id_warehouse_id int,
+        id_warehouse_code string,
+        id_wp_id int,
+        id_wp_code string,
+        id_create_id int,
+        id_update_id int,
+        id_create_time timestamp,
+        id_update_time timestamp,
+        id_adjustment_code string,
+        id_difference_status int,
+        id_difference_status_val string,
+        id_difference_count int
+        ) COMMENT 'DW层：库存差异表'
+        partitioned by(month string)
+        STORED AS PARQUET TBLPROPERTIES('parquet.compression' = 'SNAPPY')
+    </hql>
+    <hql schema="dw" tableName="fact_inventory_difference_detail" discription="库存差异详情表">
+        CREATE TABLE IF NOT EXISTS dw.fact_inventory_difference_detail (
+        warehouse_key bigint,
+        product_key bigint,
+        customer_key bigint,
+        wp_key bigint,
+        idd_idi_id int,
+        idd_di_id int,
+        idd_product_id int,
+        idd_product_barcode string,
+        idd_customer_id int,
+        idd_customer_code string,
+        idd_difference_type int,
+        idd_difference_type_val string,
+        idd_difference_num int,
+        idd_difference_actual_num int,
+        idd_di_status int,
+        idd_di_status_val string,
+        idd_orgin_quantity int,
+        idd_difference_code string,
+        idd_fv_id int,
+        idd_operate_id int,
+        idd_difference_note string,
+        idd_warehouse_id int,
+        idd_warehouse_code string,
+        idd_wp_id int,
+        idd_wp_code string
+        ) COMMENT 'DW层：库存差异详情表'
+        STORED AS PARQUET TBLPROPERTIES('parquet.compression' = 'SNAPPY')
+    </hql>
+    <hql schema="dw" tableName="fact_product_inventory" discription="产品库存表">
+        CREATE TABLE IF NOT EXISTS dw.fact_product_inventory (
+        warehouse_key bigint,
+        product_key bigint,
+        customer_key bigint,
+        pi_id int,
+        pi_product_barcode string,
+        pi_customer_id int,
+        pi_customer_code string,
+        pi_product_id int,
+        pi_warehouse_id int,
+        pi_warehouse_code string,
+        pi_planned int,
+        pi_onway int,
+        pi_pending int,
+        pi_sellable int,
+        pi_unsellable int,
+        pi_reserved int,
+        pi_outbound int,
+        pi_shipped int,
+        pi_hold int,
+        pi_no_stock int,
+        pi_warning_qty int,
+        pi_shared int,
+        pi_sold_shared int,
+        pi_buyer_id int,
+        pi_add_time timestamp,
+        pi_update_time timestamp,
+        pi_stocking int,
+        pi_tune_out int,
+        pi_tune_in int,
+        pi_change_time timestamp
+        ) COMMENT 'DW层：产品库存表'
+        partitioned by(month string)
+        STORED AS PARQUET TBLPROPERTIES('parquet.compression' = 'SNAPPY')
+    </hql>
+    <hql schema="dw" tableName="fact_take_stock" discription="盘点">
+        CREATE TABLE IF NOT EXISTS dw.fact_take_stock (
+        warehouse_key bigint,
+        wp_key bigint,
+        ts_id int,
+        ts_code string,
+        ts_warehouse_id int,
+        ts_warehouse_code string,
+        ts_wp_code string,
+        ts_wp_id int,
+        ts_user_id int,
+        ts_last_update_user_id int,
+        ts_type int,
+        ts_type_val string,
+        ts_status int,
+        ts_status_val string,
+        ts_add_time timestamp,
+        ts_update_time timestamp,
+        ts_is_product int,
+        ts_is_product_val string,
+        ts_is_quantity int,
+        ts_is_quantity_val string,
+        ts_ts_user_id int
+        ) COMMENT 'DW层：盘点'
+        partitioned by(month string)
+        STORED AS PARQUET TBLPROPERTIES('parquet.compression' = 'SNAPPY')
+    </hql>
+    <hql schema="dw" tableName="fact_take_stock_assignment" discription="盘点任务">
+        CREATE TABLE IF NOT EXISTS dw.fact_take_stock_assignment (
+        warehouse_key bigint,
+        product_key bigint,
+        customer_key bigint,
+        lc_key bigint,
+        wp_key bigint,
+        tsa_id int,
+        tsa_tsi_id int,
+        tsa_ts_code string,
+        tsa_user_id int,
+        tsa_quantity int,
+        tsa_type int,
+        tsa_type_val string,
+        tsa_status int,
+        tsa_status_val string,
+        tsa_add_time timestamp,
+        tsa_warehouse_id int,
+        tsa_warehouse_code string,
+        tsa_wp_id int,
+        tsa_wp_code string,
+        tsa_product_id int,
+        tsa_product_barcode string,
+        tsa_customer_id int,
+        tsa_customer_code string,
+        tsa_lc_id int,
+        tsa_lc_code string
+        ) COMMENT 'DW层：盘点任务'
+        partitioned by(month string)
+        STORED AS PARQUET TBLPROPERTIES('parquet.compression' = 'SNAPPY')
+    </hql>
+    <hql schema="dw" tableName="fact_take_stock_item" discription="盘点方式">
+        CREATE TABLE IF NOT EXISTS dw.fact_take_stock_item (
+        warehouse_key bigint,
+        customer_key bigint,
+        product_key bigint,
+        lc_key bigint,
+        wp_key bigint,
+        tsi_id int,
+        tsi_ts_code string,
+        tsi_customer_id int,
+        tsi_customer_code string,
+        tsi_lc_id int,
+        tsi_lc_code string,
+        tsi_product_id int,
+        tsi_product_barcode string,
+        tsi_current_quantity int,
+        tsi_quantity int,
+        tsi_status int,
+        tsi_status_type_val string,
+        tsi_add int,
+        tsi_abnormal_type int,
+        tsi_abnormal_type_val string,
+        tsi_note string,
+        tsi_update_time timestamp,
+        tsi_order_occupied_quantity int,
+        tsi_warehouse_id int,
+        tsi_warehouse_code string,
+        tsi_wp_id int,
+        tsi_wp_code string
+        ) COMMENT 'DW层：盘点方式'
+        STORED AS PARQUET TBLPROPERTIES('parquet.compression' = 'SNAPPY')
+    </hql>
+    <hql schema="dw" tableName="fact_flow_volume" discription="流转">
+        CREATE TABLE IF NOT EXISTS dw.fact_flow_volume (
+        warehouse_key bigint,
+        product_key bigint,
+        customer_key bigint,
+        wp_key bigint,
+        fv_id int,
+        fv_product_id int,
+        fv_product_barcode string,
+        fv_customer_id int,
+        fv_customer_code string,
+        fv_warehouse_id int,
+        fv_warehouse_code string,
+        fv_wp_id int,
+        fv_wp_code string,
+        fv_pending_quantity int,
+        fv_quantity int,
+        fv_adjustment_lock int,
+        fv_adjustment_lock_val string,
+        fv_add_time timestamp,
+        fv_update_time timestamp,
+        fv_processing_priority int,
+        fv_processing_priority_val string
+        ) COMMENT 'DW层：流转'
+        partitioned by(month string)
+        STORED AS PARQUET TBLPROPERTIES('parquet.compression' = 'SNAPPY')
+    </hql>
+    <hql schema="dw" tableName="fact_inventory_batch" discription="库存批次表">
+        CREATE TABLE IF NOT EXISTS dw.fact_inventory_batch (
+        warehouse_key bigint,
+        product_key bigint,
+        customer_key bigint,
+        wp_key bigint,
+        ib_id int,
+        ib_lc_code string,
+        ib_product_id int,
+        ib_box_code string,
+        ib_product_barcode string,
+        ib_customer_id int,
+        ib_customer_code_own string,
+        ib_reference_no string,
+        ib_application_code string,
+        ib_supplier_id int,
+        ib_warehouse_id int,
+        ib_warehouse_code string,
+        ib_receiving_code string,
+        ib_receiving_id int,
+        ib_po_code string,
+        ib_lot_number int,
+        ib_type int,
+        ib_type_val string ,
+        ib_status int,
+        ib_status_val string,
+        ib_hold_status int,
+        ib_hold_status_val string,
+        ib_quantity int,
+        ib_fifo_time timestamp,
+        ib_note string,
+        ib_add_time timestamp,
+        ib_update_time timestamp,
+        ib_transit_receiving_code string,
+        ib_timestamp timestamp,
+        ib_out_quantity int,
+        ib_wp_id int,
+        ib_wp_code string,
+        ib_owms_ib_id int
+        ) COMMENT 'DW层：库存批次表'
+        partitioned by(month string)
+        STORED AS PARQUET TBLPROPERTIES('parquet.compression' = 'SNAPPY')
+    </hql>
+    <hql schema="dw" tableName="fact_inventory_batch_log" discription="库存批次日志表">
+        CREATE TABLE IF NOT EXISTS dw.fact_inventory_batch_log (
+        warehouse_key bigint,
+        product_key bigint,
+        customer_key bigint,
+        wp_key bigint,
+        ibl_id int,
+        ibl_ref_no string,
+        ibl_lc_code string,
+        ibl_product_id int,
+        ibl_product_barcode string,
+        ibl_supplier_id int,
+        ibl_warehouse_id int,
+        ibl_ib_id int,
+        ibl_receiving_code string,
+        ibl_po_code string,
+        ibl_box_code string,
+        ibl_reference_no string,
+        ibl_application_code string,
+        ibl_application_code_val string,
+        ibl_note string,
+        ibl_quantity_before int,
+        ibl_quantity_after int,
+        ibl_user_id int,
+        ibl_ip string,
+        ibl_add_time timestamp,
+        ibl_customer_id int,
+        ibl_customer_code string,
+        ibl_wp_id int,
+        ibl_wp_code string,
+        ibl_warehouse_code string
+        ) COMMENT 'DW层：库存批次日志表'
+        partitioned by(month string)
+        STORED AS PARQUET TBLPROPERTIES('parquet.compression' = 'SNAPPY')
+    </hql>
+
+</queries>
+
