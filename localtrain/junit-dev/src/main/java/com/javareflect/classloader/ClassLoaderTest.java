@@ -7,7 +7,7 @@ import java.util.Properties;
 
 /**
  * 了解类的加载器
- * @author shkstart
+ *
  * @create 2019 下午 2:16
  */
 public class ClassLoaderTest {
@@ -53,8 +53,6 @@ public class ClassLoaderTest {
         String user = pros.getProperty("user");
         String password = pros.getProperty("password");
         System.out.println("user = " + user + ",password = " + password);
-
-
 
     }
 

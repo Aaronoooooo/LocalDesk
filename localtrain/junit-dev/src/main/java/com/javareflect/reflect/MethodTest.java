@@ -9,8 +9,6 @@ import java.lang.reflect.Modifier;
 
 /**
  * 获取运行时类的方法结构
- *
- * @author shkstart
  * @create 2019 下午 3:37
  */
 public class MethodTest {
@@ -19,15 +17,16 @@ public class MethodTest {
     public void test1(){
 
         Class clazz = Person.class;
+        Class<Math> mathClass = Math.class;
 
         //getMethods():获取当前运行时类及其所有父类中声明为public权限的方法
-        Method[] methods = clazz.getMethods();
+        Method[] methods = mathClass.getMethods();
         for(Method m : methods){
             System.out.println(m);
         }
         System.out.println();
         //getDeclaredMethods():获取当前运行时类中声明的所有方法。（不包含父类中声明的方法）
-        Method[] declaredMethods = clazz.getDeclaredMethods();
+        Method[] declaredMethods = mathClass.getDeclaredMethods();
         for(Method m : declaredMethods){
             System.out.println(m);
         }
@@ -39,8 +38,8 @@ public class MethodTest {
      */
     @Test
     public void test2(){
-        Class clazz = Person.class;
-        Method[] declaredMethods = clazz.getDeclaredMethods();
+        Class<Math> mathClass = Math.class;
+        Method[] declaredMethods = mathClass.getDeclaredMethods();
         for(Method m : declaredMethods){
             //1.获取方法声明的注解
             Annotation[] annos = m.getAnnotations();

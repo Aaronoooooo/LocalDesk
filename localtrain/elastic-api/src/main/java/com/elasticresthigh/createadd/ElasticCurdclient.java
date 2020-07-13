@@ -185,7 +185,7 @@ public class ElasticCurdclient {
         request.id("1");
         String jsonString = "{" +
                 "\"user\":\"kimchy\"," +
-                "\"postDate\":\"2013-01-30\"," +
+                "\"postDate\":\"2020-01-30\"," +
                 "\"message\":\"trying out Elasticsearch\"" +
                 "}";
         request.source(jsonString, XContentType.JSON);
@@ -440,6 +440,7 @@ public class ElasticCurdclient {
     //    @Test
     public JSONObject bulk2() {
         String str = "{\"customIndex\":[{\"indexName\":\"index_text101\",\"indexType\":\"doc\",\"fieldName\":\"emp\",\"fieldValue\":\"dev\",\"id\":\"1001\"},{\"indexName\":\"index_text102\",\"indexType\":\"doc\",\"fieldName\":\"emp\",\"fieldValue\":\"dev\",\"id\":\"1002\"}],\"host\":\"bigdata1\",\"port\":9200}";
+
         JSONObject jsonCustomIndex;
         jsonCustomIndex = JSONObject.parseObject(str);
         String host = jsonCustomIndex.getString("host");

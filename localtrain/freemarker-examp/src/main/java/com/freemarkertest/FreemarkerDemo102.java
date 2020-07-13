@@ -26,6 +26,7 @@ public class FreemarkerDemo102 {
         try {
             // step2 获取模版路径
             configuration.setDirectoryForTemplateLoading(new File(TEMPLATE_PATH));
+
             // step3 创建数据模型
             Map<String, Object> dataMap = new HashMap<String, Object>();
             dataMap.put("name", "itdragon博客");

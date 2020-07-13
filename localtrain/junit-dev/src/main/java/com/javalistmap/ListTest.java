@@ -4,10 +4,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author pengfeisu
@@ -17,12 +14,12 @@ public class ListTest {
     private static final Logger log = LoggerFactory.getLogger(ListTest.class);
 
     public static void main(String[] args) {
-        List<Student> students = new ListTest().studentList();
-        System.out.println("iterator:" + students);
+        // List<Student> students = new ListTest().studentList();
+        // System.out.println("iterator:" + students);
     }
 
-    public List<Student> studentList() {
-        List<Student> students = new ArrayList<>();
+    public void studentList() {
+        // List<Student> students = new ArrayList<>();
 
         List<String> list = new ArrayList<String>();
         list.add("A");
@@ -36,12 +33,11 @@ public class ListTest {
                 list.remove(i);
             }
         }
-        for (String li : list) {
-            Student student = new Student();
-            student.setName(li);
-            students.add(student);
-        }
-        return students;
+        // for (String li : list) {
+        //     Student student = new Student();
+        //     student.setName(li);
+        //     students.add(student);
+        // }
     }
 
     /**
@@ -120,5 +116,166 @@ public class ListTest {
                 /*1 : fds	2 : valu*/
             }
         }
+    }
+
+    @Test
+    public void test4() {
+        Collection coll = new ArrayList();
+        coll.add(123);
+        coll.add(456);
+        coll.add(new String("Tom"));
+        coll.add(false);
+
+        //删除集合中"Tom"
+        Iterator iterator = coll.iterator();
+        while (iterator.hasNext()) {
+//            iterator.remove();
+            Object obj = iterator.next();
+            if ("Tom".equals(obj)) {
+                iterator.remove();
+//                iterator.remove();
+            }
+
+        }
+        //遍历集合
+        iterator = coll.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+
+    @Test
+    public void testList1() {
+
+        //开始(创建List)
+        List<String> list = new ArrayList<String>();
+        list.add("张学友");
+        list.add("刘德华");
+        list.add("郭富城");
+        list.add("黎明");
+
+        // 判断
+        if (!list.isEmpty()) {
+
+            //循环
+            for (int i = 0; i < list.size(); i++) {
+                String str = list.get(i);
+
+                // 判断
+                if (str.equals("黎明")) {
+                    list.remove(i);
+                }
+            }
+        }
+        //结束
+        // return list;
+        System.out.println(list.toString());
+    }
+
+    @Test
+    public void testList2() {
+
+        //开始(创建List)
+        List<String> list = new ArrayList<String>();
+        list.add("乔峰");
+        list.add("姑苏慕容");
+        list.add("段誉");
+        list.add("金毛狮王");
+        list.add("张三丰");
+
+        //循环
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            Object obj = iterator.next();
+
+            // 判断
+            if ("姑苏慕容".equals(obj)) {
+                iterator.remove();
+            }
+        }
+        //结束
+        // return list;
+        System.out.println(list.toString());
+    }
+
+    @Test
+    public void testList3() {
+
+        //开始(创建List)
+        List<String> list = new ArrayList<String>();
+        list.add("静蕾");
+        list.add("周迅");
+        list.add("赵薇");
+        list.add("章子怡");
+        list.add("张三丰");
+
+        //循环
+        for (int i = 0; i < list.size(); i++) {
+            String str = list.get(i);
+
+            // 判断
+            if (str.equals("静蕾")) {
+                list.remove(i);
+            } else if (str.equals("张三丰")) {
+                list.remove(i);
+            }
+        }
+        //结束
+        // return list;
+        System.out.println(list.toString());
+    }
+
+    @Test
+    public void testList4() {
+
+        //开始(创建List)
+        List<String> list = new ArrayList<String>();
+        list.add("杨幂");
+        list.add("刘诗诗");
+        list.add("倪妮");
+        list.add("Angelababy");
+        list.add("迪丽热巴");
+
+        //循环
+        for (int i = 0; i < list.size(); i++) {
+            String str = list.get(i);
+
+            // 判断
+            if (str.equals("Angelababy")) {
+                list.set(i, "杨颖");
+            }
+        }
+        //结束
+        // return list;
+        System.out.println(list.toString());
+    }
+
+    @Test
+    public void testList5() {
+
+        //开始(创建List)
+        List<String> list = new ArrayList<String>();
+        // list.add("四小花旦");
+        list.add("梅兰芳");
+        list.add("程砚秋");
+        list.add("尚小云");
+        list.add("荀慧生");
+        list.add("关晓彤");
+
+        //循环
+        for (int i = 0; i < list.size(); i++) {
+
+            // 判断
+            String str = list.get(i);
+            if ("关晓彤".equals(str)) {
+                list.add("鹿晗");
+            } else {
+                System.out.println(str);
+            }
+
+        }
+        //结束
+        // return list;
+        System.out.println(list.toString());
     }
 }

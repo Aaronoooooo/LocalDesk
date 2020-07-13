@@ -1,10 +1,10 @@
-${r'# Ö»Êä³ö´íÎó¼¶±ğµÄÈÕÖ¾.
+${r'# åªè¾“å‡ºé”™è¯¯çº§åˆ«çš„æ—¥å¿—.
 log4j.rootLogger=error, stdout,R
-# ¿ØÖÆÌ¨
+# æ§åˆ¶å°
 log4j.appender.stdout=org.apache.log4j.ConsoleAppender
 log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
 log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss,SSS}  %5p --- [%2t]  %-8c(line:%2L)  :  %m%n
-# ¿É¹ö¶¯µÄÎÄ¼ş
+# å¯æ»šåŠ¨çš„æ–‡ä»¶
 log4j.appender.R=org.apache.log4j.RollingFileAppender
 log4j.appender.R.File=../log/agent.log
 log4j.appender.R.MaxFileSize=1024KB

@@ -10,15 +10,12 @@ import java.lang.reflect.Method;
 /**
  * 调用运行时类中指定的结构：属性、方法、构造器
  *
- * @author shkstart
+ *
  * @create 2019 下午 4:46
  */
 public class ReflectionTest {
 
-    /*
 
-        不需要掌握
-     */
     @Test
     public void testField() throws Exception {
         Class clazz = Person.class;
