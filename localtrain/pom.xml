@@ -10,7 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>cdh-kafka</module>
-        <module>elastic-java-api</module>
         <module>junit-dev</module>
         <module>elastic-query-dsl</module>
         <module>flink-api</module>
@@ -114,14 +113,14 @@
         </dependency>
         <!--jdbcTemplate-->
         <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-core</artifactId>-->
-            <!--<version>5.2.4.RELEASE</version>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-core</artifactId>-->
+        <!--<version>5.2.4.RELEASE</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-jdbc</artifactId>-->
-            <!--<version>5.2.4.RELEASE</version>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-jdbc</artifactId>-->
+        <!--<version>5.2.4.RELEASE</version>-->
         <!--</dependency>-->
 
     </dependencies>

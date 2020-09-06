@@ -39,7 +39,7 @@ public class JsonTest {
 //        String s = "[{\"success\":true,\"data\":[{\"building_id\":\"building_id\",\"building_num\":\"building_num\",\"room_name\":\"**\",\"door_name\":\"**\",\"electric\":\"**\"}]}]";
         String s = "[{\"success\":true,\"data\":[{\"building_id\":\"building_id\",\"building_num\":\"building_num\",\"room_name\":\"**\",\"door_name\":\"**\",\"electric\":\"**\"}]}]";
         String b = s.substring(0, s.length());
-        String c = b.substring(1, b.length() -1);
+        String c = b.substring(1, b.length() - 1);
         System.out.println("b____" + b);
         System.out.println("c____" + c);
         JSONObject jsonx = JSON.parseObject(c);
@@ -130,4 +130,5 @@ public class JsonTest {
             System.out.println(op_way + res + pwd_no + user_mobile + "------------");
         }
     }
+
 }

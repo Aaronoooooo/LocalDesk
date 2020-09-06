@@ -4,8 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.Cell;
-import org.apache.hadoop.hbase.CellUtil;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
@@ -35,8 +33,9 @@ public class HBaseAPI {
 
     public static void main(String[] args) throws Exception {
         Configuration config = HBaseConfiguration.create();
-        config.set("hbase.zookeeper.quorum", "cdh101");
-        config.set("hbase.zookeeper.property.clientPort", "32181");
+        config.set("hbase.zookeeper.quorum", "node124,node125,node126");
+        config.set("hbase.zookeeper.property.clientPort", "2181");
+        //config.set("hbase.master", "node124:16000");
         Connection connection = ConnectionFactory.createConnection(config);
 
 //        long t1 = System.currentTimeMillis();
@@ -68,7 +67,7 @@ public class HBaseAPI {
     private void listTable() throws IOException {
         Scan scan = new Scan();
         Admin admin = connection.getAdmin();
-        try {
+        //try {
             List<TableDescriptor> tableDescriptors = admin.listTableDescriptors();
             for (TableDescriptor tableDescriptor : tableDescriptors) {
 //                KYLIN_SJI4AB8VQ6
@@ -76,35 +75,36 @@ public class HBaseAPI {
 //                KYLIN_YINV1ZETW2
 //                kylin_metadata
                 TableName tableName = tableDescriptor.getTableName();
-                System.out.println("Table:" + tableName + ", TableEnabled:" + admin.isTableEnabled(tableName));
+                System.out.println("Table:" + tableName + ", TableEnabled:" /*+ admin.isTableEnabled(tableName)*/);
             }
-            Table tables = connection.getTable(TableName.valueOf(TABLE_NAME));
-            ResultScanner resultScanner = tables.getScanner(scan);
-            for (Result result : resultScanner) {
-                Cell[] cells = result.rawCells();
-                for (Cell cell : cells) {
-                    //得到 rowkey
-//                        System.out.println("行键:" + Bytes.toString(CellUtil.cloneRow(cell)));
-                    //得到列族
-                    String family = Bytes.toString(CellUtil.cloneFamily(cell));
-                    String column = Bytes.toString(CellUtil.cloneQualifier(cell));
-                    System.out.println(">>表Descriptor:" + tables.getName() + " 列族: " + family + " 列:" + column);
+//            Table tables = connection.getTable(TableName.valueOf(TABLE_NAME));
+//            ResultScanner resultScanner = tables.getScanner(scan);
+//            for (Result result : resultScanner) {
+//                Cell[] cells = result.rawCells();
+//                for (Cell cell : cells) {
+//                    //得到 rowkey
+////                        System.out.println("行键:" + Bytes.toString(CellUtil.cloneRow(cell)));
+//                    //得到列族
+//                    String family = Bytes.toString(CellUtil.cloneFamily(cell));
+//                    String column = Bytes.toString(CellUtil.cloneQualifier(cell));
+//                    System.out.println(">>表Descriptor:" + tables.getName() + " 列族: " + family + " 列:" + column);
 //                        System.out.println("值:" + Bytes.toString(CellUtil.cloneValue(cell)));
-                }
-            }
-        } finally {
+//                }
+//            }
+//        } finally {
             admin.close();
-        }
+        //}
     }
 
-    /*"{
-    "customHbase":
-            [
-    {"hbaseTable":"sys_org","hbaseFamily":"abbr","hbaseColumn":[{"province"},{"city"}]},{},{}
-            ],
-    "host": "flydiysz.cn",
-    "port": "32182"
-    }"*/
+//"{
+//    "customHbase":
+//            [
+//    {"hbaseTable":"sys_org","hbaseFamily":"abbr","hbaseColumn":[{"province"},{"city"}]},{},{}
+//            ],
+//    "host": "flydiysz.cn",
+//    "port": "32182"
+//    }"
+
 
     private void createTable() throws IOException {
         Admin admin = connection.getAdmin();
@@ -133,9 +133,11 @@ public class HBaseAPI {
                     admin.disableTable(deleteTableName);
                     admin.deleteTable(deleteTableName);
                     System.out.println("表" + deleteTableName + "删除成功！");
-                } /*else {
+                }
+else {
                     System.out.println("表" + deleteTableName + "不存在！");
-                }*/
+                }
+
 //                System.out.println("Table: " + tableName);
 //                System.out.println("\texists: " + admin.tableExists(tableName));
 //                System.out.println("\tenabled: " + admin.isTableEnabled(tableName));
@@ -221,7 +223,8 @@ public class HBaseAPI {
         table.close();
     }
 
-    /*bulk operation*/
+//bulk operation
+
 //    @Test
     public JSONArray createTableTest() {
         String a = "{\"customHbase\":[{\"hbaseTable\":\"creHbase5\",\"hbaseFamily\":\"familyTest1\"},{\"hbaseTable\":\"creHbase6\",\"hbaseFamily\":\"familyTest2\"}],\"host\": \"cdh101\",\"port\": \"32181\"}";
@@ -268,7 +271,8 @@ public class HBaseAPI {
         return customHBasesArr;
     }
 
-    /*批量插入数据*/
+//批量插入数据
+
     @Test
     public void createTableTest2() {
         String aa = "{\"rows\":[{\"row\":\"1001\"},{\"row\":\"1002\"}],\"columns\":[{\"column\":\"user\"},{\"column\":\"addr\"}],\"customHbase\":[{\"hbaseTable\":\"creHbase3\",\"hbaseFamily\":\"familyTest1\"},{\"hbaseTable\":\"creHbase4\",\"hbaseFamily\":\"familyTest2\"}],\"values\":[{\"value\":\"zhangsan\"},{\"value\":\"lisi\"}],\"host\":\"cdh101\",\"port\":\"32181\"}";
