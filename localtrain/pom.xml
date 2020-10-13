@@ -54,7 +54,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.13.1</version>
         </dependency>
 
         <!--logback-classic会将slf4j-api-1.7.25.jar以及logback-core-1.2.3.jar 引入项目-->
