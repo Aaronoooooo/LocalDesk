@@ -57,7 +57,7 @@ public class HbaseDemo {
     public static Connection initHbase() throws MasterNotRunningException,IOException {
 
         Configuration configuration = HBaseConfiguration.create();
-        configuration.set("hbase.zookeeper.quorum", "104.250.140.226,104.250.133.2,104.250.129.202");
+        configuration.set("hbase.zookeeper.quorum", "bigdata1,bigdata2,bigdata3");
         //configuration.set("hbase.zookeeper.quorum", "bigdata1,bigdata2,bigdata3");
         configuration.set("hbase.zookeeper.property.clientPort", "2181");
         //configuration.set("zookeeper.znode.parent", "/hbase");

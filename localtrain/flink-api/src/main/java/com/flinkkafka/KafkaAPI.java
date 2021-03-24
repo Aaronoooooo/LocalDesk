@@ -24,7 +24,7 @@ public class KafkaAPI {
     //    public static String BOOTSTRAP_SERVERS = "106.52.33.54:9092";
 //    public static String BOOTSTRAP_SERVERS = "flydiysz.cn:32670";
 //    public static String BOOTSTRAP_SERVERS = "129.204.115.159:9092";
-    public static String BOOTSTRAP_SERVERS = "19.15.115.31:9092";
+    public static String BOOTSTRAP_SERVERS = "node30:6667,node104:6667,node32:6667";
     public static String KAFKA_TOPIC = "nts_design_canal.test";
     public static String REQUEST_TIMEOUT = "6000";
     public static final Logger log = LoggerFactory.getLogger(KafkaAPI.class);

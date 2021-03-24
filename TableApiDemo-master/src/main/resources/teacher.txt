@@ -1,5 +1,0 @@
-1,apache
-2,cloudera
-3,alibaba
-4,tencent
-5,baidu
