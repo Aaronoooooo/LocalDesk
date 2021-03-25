@@ -1,0 +1,31 @@
+package com.zongteng.ztetl.entity.gc_wms
+
+case class QualityControl (
+                            qc_id:String,
+                            qc_code:String,
+                            reference_no:String,
+                            rd_id:String,
+                            receiving_id:String,
+                            warehouse_id:String,
+                            receiving_code:String,
+                            product_barcode:String,
+                            qc_type:String,
+                            product_id:String,
+                            customer_code:String,
+                            customer_id:String,
+                            receiving_user_id:String,
+                            qc_operator_id:String,
+                            qc_quantity:String,
+                            qc_received_quantity:String,
+                            qc_quantity_sellable:String,
+                            qc_quantity_unsellable:String,
+                            qc_delivery_quantity:String,
+                            qc_status:String,
+                            qc_abnormal_status:String,
+                            lc_code:String,
+                            qc_note:String,
+                            qc_finish_time:String,
+                            qc_add_time:String,
+                            qc_update_time:String,
+                            qc_timestamp:String
+                          )
