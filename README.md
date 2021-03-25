@@ -22,6 +22,4 @@ bqsongshu,1=&#x1F332;
 bqtongji,1=&#x1F4CA; 
 bqwenhao,1=&#x2753; 
 bqwenjianjia,1=&#x1F4C2;
-bqxigua,1=&#x1F349; 
-bqyouxiang,1=&#x1F4E7;
-bqzhibo,1=&#x1F3A6;
+bqxigua,1=&#x1F349;
