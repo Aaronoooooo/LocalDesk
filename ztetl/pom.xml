@@ -10,7 +10,7 @@
     <scala.version>2.11.0</scala.version>
     <!--2.2.0支持本地调式-->
     <!--生产安装的版本是2.3.0，但是不支持本地调式-->
-    <spark.version>2.2.0</spark.version>
+    <spark.version>2.4.7</spark.version>
   </properties>
 
 
