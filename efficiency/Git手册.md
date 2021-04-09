@@ -83,6 +83,58 @@
 > 查看修改结果
 ![4.git_查看修改结果.jpg](http://ww1.sinaimg.cn/large/c9d5eefcgy1gpbceetbarj20n3052wew.jpg)
 
+##### 删除Git Commit 历史记录
+> 方式一:
+```shell script
+新建 reconstruction_branche 分支,并切换
+git checkout --orphan reconstruction_branche
+
+添加所有本地文件到暂存区
+git add .
+
+添加提交信息
+git commit -m "reconstruction project,delete history commit"
+
+强制删除 master 分支
+git branch -D master
+
+修改当前分支 reconstruction_branche 为 master 分支
+git branch -m master
+
+强制更新存储库,推送到远程仓库
+git push -f origin master
+
+```
+
+> 方式二
+```shell script
+删除当前项目中的 .git 文件
+rm -rf .git
+
+初始化本地库
+git init 
+
+添加远程仓库
+git remote add origin git@github.com:git_user/repository_name
+
+添加所有本地文件到暂存区
+git add .
+
+添加所有本地文件到暂存区
+git add .
+
+添加提交信息
+git commit -m "reconstruction project,delete history commit"
+
+强制更新存储库,推送到远程仓库
+git push -f origin master
+```
+![git提交记录2.jpg](http://ww1.sinaimg.cn/large/c9d5eefcgy1gpdhz5np4ej20xp0fz0w7.jpg)
+
+![git提交记录3.jpg](http://ww1.sinaimg.cn/large/c9d5eefcgy1gpdhz5noksj20x208ymza.jpg)
+
+![git提交记录.jpg](http://ww1.sinaimg.cn/large/c9d5eefcgy1gpdhz5m4qgj20ri0cb3zz.jpg)
+
 >Error1:  
 1.OpenSSL SSL_read: Connection was reset, errno 10054  
 2.Failed to connect to github.com port 443: Timed out
