@@ -8,6 +8,17 @@
 > ALTER TABLE `tablename` CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 ```
 
+#### Navicat 新建查询提示系统找不到路径
+> 关闭当前数据库连接  
+![找不到路径.jpg](http://ww1.sinaimg.cn/large/c9d5eefcgy1gpdn3zqfajj20ss09ujs7.jpg)  
+![关闭当前数据库链接.jpg](http://ww1.sinaimg.cn/large/c9d5eefcgy1gpdn3zqa0sj20mu0eojt9.jpg)  
+
+> 右键编辑连接 -> 高级 -> 修改Navicat设置位置
+![设置位置.jpg](http://ww1.sinaimg.cn/large/c9d5eefcgy1gpdn3zrhpdj210d0g8tbv.jpg)  
+
+> 选择新建查询  
+![新建查询成功.jpg](http://ww1.sinaimg.cn/large/c9d5eefcgy1gpdn3zqhd0j20nf0ii40p.jpg)
+
 #### Redis
 - Redis外网无法反问:Could not get a resource from the pool  
 ```shell script

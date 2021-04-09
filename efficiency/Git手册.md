@@ -67,7 +67,7 @@
 > `git rebase -i` HEAD~5                 (列出最近5条 Commit 列表)
 > i -> e -> :wq                          (找到要修改的 Commit 记录,将`pick` 修改为 `e`,保存退出)
 > git commit --amend --m="update latest" (修正以提交Commit Message)
-> git rebase continue                    (保存并继续修改)
+> git rebase --continue                    (保存并继续修改)
 
 # 参数说明<operation>
 --continue : 继续
