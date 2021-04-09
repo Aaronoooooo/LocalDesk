@@ -1,0 +1,5 @@
+# Project exclude paths
+/scala/target/
+/spark/target/
+/summer-framework/target/
+.idea
