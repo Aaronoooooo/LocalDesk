@@ -77,6 +77,47 @@ step1: 删除dependency-reduced-pom.xml后打包
 1.mvn clean install package -Dmaven.test.skip=true
 ```
 
+#### ElasticSearch7.6.2使用_delete_by_query进行批量查询版本冲突问题
+```shell script
+# 原因:直接使用_delete_by_query构建批量查询删除犹豫数据量太大,导致sockectTimeout
+curl -X POST "mobikok-bigdata301:9200/mongo_message_*/_delete_by_query?pretty" -H 'Content-Type: application/json' -d'{
+    "query": {
+        "range": {
+            "timestamp": {
+                "lt": 1606751999000
+            }
+        }
+    }
+}'
+```
+> 优化一 : 开启多线程并发查询(导致版本冲突,由乐观锁并发控制引起)  
+```shell script
+curl -X POST "mobikok-bigdata301:9200/mongo_message_*/_delete_by_query?scroll_size=3000&slices=5&pretty" -H 'Content-Type: application/json' -d'{
+    "query": {
+        "range": {
+            "timestamp": {
+                "lt": 1606751999000
+            }
+        }
+    }
+}'
+```
+![版本冲突.jpg](http://ww1.sinaimg.cn/large/c9d5eefcgy1gpg24y9wdej20x8066wf2.jpg)
+
+> 优化二 : wait_for_completion=false 异步执行,不阻塞请求,后台自动运行,返回task编号; wait_for_completion=true 表示请求阻塞,直到操作完成结束(conflicts=proceed参数会跳过版本冲突,继续执行)  
+```shell script
+curl -X POST "mobikok-bigdata301:9200/mongo_message_*/_delete_by_query?scroll_size=3000&slices=5&conflicts=proceed&wait_for_completion=false&pretty" -H 'Content-Type: application/json' -d'{
+    "query": {
+        "range": {
+            "timestamp": {
+                "lt": 1606751999000
+            }
+        }
+    }
+}'
+# 返回的task编号通过GET /_tasks/<task_id> 查看后台任务状态
+```
+![task状态](http://ww1.sinaimg.cn/large/c9d5eefcgy1gpg29x61d2j20wd0gogo0.jpg)
 #### Docker
 - docker-compose -f docker-compose-server.yaml down  
   >ERROR: error while removing network: network pro-sdk id 167ad83de7fc4b25006cd74d5f965 has active endpoints
