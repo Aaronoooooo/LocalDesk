@@ -1,7 +1,7 @@
 #### 这里啥都有
   
 - 📚 <b>技术栈解析</b> 📚  
-[「干货」](在路上)  
+[「干货」](./efficiency/WeChatSubscription.md)  
 
 - ⚖ <b>算法小抄</b> ⚖  
 [「Algorithm」](algorithm/src/main/java/com/aaron/algorithm) 
