@@ -6,7 +6,7 @@ import io.searchbox.client.config.HttpClientConfig
 import io.searchbox.client.{JestClient, JestClientFactory}
 import io.searchbox.core.{Bulk, BulkResult, Index}
 
-object MyEsUtil {
+object MyEsUtilTest {
   private val ES_HOST = "http://192.168.11.131"
   private val ES_HTTP_PORT = 9200
   private var factory: JestClientFactory = null
