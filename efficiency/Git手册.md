@@ -115,15 +115,6 @@
 > git commit --amend                     (vim 模式编辑message)
 > git rebase --continue                  (保存并继续修改)
 
-# 合并历史Commit信息
-> git rebase -i                        (列出所有 Commit 列表)
-> git rebase -i HEAD~5                 (列出最近5条 Commit 列表)
-> i -> s -> :wq                        (找到要修改的 Commit 记录,将`pick` 修改为 `s`,保存退出)
-> i -> f -> :wq                        (f表示不保留要合并commit注释,s表示保留commit注释)
-> git commit --amend                    (vim 模式编辑message)
-> git push --force origin master        (保存并继续修改)
-> git rebase --abort                    (取消本次合并操作)
-
 # 参数说明<operation>
 --continue : 继续
 --skip     : 跳过
