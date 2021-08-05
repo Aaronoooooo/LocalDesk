@@ -119,6 +119,36 @@
 --continue : 继续
 --skip     : 跳过
 --abort    : 中止
+
+# 全局修改邮箱地址
+> git filter-branch --commit-filter '
+        if [ "$GIT_AUTHOR_EMAIL" = "991696475@qq.com" ];
+        then
+                GIT_AUTHOR_NAME="Aaronoooooo";
+                GIT_AUTHOR_EMAIL="pro1024k@163.com";
+                git commit-tree "$@";
+        else
+                git commit-tree "$@";
+        fi' HEAD
+
+# 从每一个commit中移除一个文件
+> git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
+> git filter-branch --tree-filter --all 'rm -f passwords.txt' HEAD 
+# 参数说明
+--all : 让 filter-branch 在所有分支上运行
+
+# 查看暂存区文件
+> git status
+# 移除add暂存区中的文件
+> git reset HEAD added.md
+# 撤消修改——将它还原成上次提交时的样子或者刚克隆完的样子
+> git checkout -- added.md
+
+# 删除被git跟踪的文件,同 .gitignore 类似排除跟踪文件
+# 查看被跟踪的文件
+> git ls-files
+# 移除被跟踪文件
+> git rm -r --cached file_name
 ```
 > 查看编辑提交记录  
 ![1.git_查看提交记录.jpg](http://ww1.sinaimg.cn/large/c9d5eefcgy1gpbcfo15txj20o004i74n.jpg)  
