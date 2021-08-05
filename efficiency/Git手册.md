@@ -98,16 +98,31 @@
 > git commit --amend --m="update latest commit" --author="git_account <git_email>"
 > git commit --amend --no-edit
 
+# 方式三(重新提交)
+> git commit -m 'initial commit'
+> git add forgotten_file
+> git commit --amend   # 忘记了暂存forgotten_file,最终只会有一个提交——第二次提交将代替第一次提交的结果
+
 # 参数说明
 --m : commit message
 --author : git账号
 
 # 修改历史Commit信息
-> `git rebase -i`                        (列出所有 Commit 列表)
-> `git rebase -i` HEAD~5                 (列出最近5条 Commit 列表)
+> git rebase -i                        (列出所有 Commit 列表)
+> git rebase -i HEAD~5                 (列出最近5条 Commit 列表)
 > i -> e -> :wq                          (找到要修改的 Commit 记录,将`pick` 修改为 `e`,保存退出)
-> git commit --amend --m="update latest" (修正以提交Commit Message)
-> git rebase --continue                    (保存并继续修改)
+# git commit --amend --m="update latest" (修正以提交Commit Message)
+> git commit --amend                     (vim 模式编辑message)
+> git rebase --continue                  (保存并继续修改)
+
+# 合并历史Commit信息
+> git rebase -i                        (列出所有 Commit 列表)
+> git rebase -i HEAD~5                 (列出最近5条 Commit 列表)
+> i -> s -> :wq                        (找到要修改的 Commit 记录,将`pick` 修改为 `s`,保存退出)
+> i -> f -> :wq                        (f表示不保留要合并commit注释,s表示保留commit注释)
+> git commit --amend                    (vim 模式编辑message)
+> git push --force origin master        (保存并继续修改)
+> git rebase --abort                    (取消本次合并操作)
 
 # 参数说明<operation>
 --continue : 继续

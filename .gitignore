@@ -29,3 +29,4 @@ out/
 *.ipr
 *.iws
 *.iml
+*.stackdump
